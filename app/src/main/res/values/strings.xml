@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Mini News App</string>
+    <string name="news_section">News Section</string>
+    <string name="date_of_web_publication">Date of Web Publication</string>
+    <string name="author_s_name">Author\'s name</string>
+    <string name="news_title">News Title</string>
+</resources>
