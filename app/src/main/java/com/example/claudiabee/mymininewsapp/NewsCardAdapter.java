@@ -31,20 +31,30 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
      * This method specifies the content of each item of the RecyclerView.
      */
     @Override
-    public void onBindViewHolder(@NonNull NewsCardViewHolder newsHolder, final int position) {
+    public void onBindViewHolder(@NonNull NewsCardViewHolder newsHolder, int position) {
         newsHolder.newsSectionTextView.setText(newsFeed.get(newsHolder.getAdapterPosition()).getNewsSection());
-        newsHolder.dateOfWebPublicationTextView.setText(newsFeed.get(newsHolder.getAdapterPosition()).getWebPublicationDate());
+
+        final News data = newsFeed.get(position);
+
+        // Check if a date of publication on the web is provided for this News or not
+        if (TextUtils.isEmpty(data.getWebPublicationDate())) {
+            newsHolder.dateOfWebPublicationTextView.setVisibility(View.GONE);
+        } else {
+            newsHolder.dateOfWebPublicationTextView.setText(data.getWebPublicationDate());
+            newsHolder.dateOfWebPublicationTextView.setVisibility(View.VISIBLE);
+        }
         // Check if an author is provided for this News or not
-        if (TextUtils.isEmpty(newsFeed.get(newsHolder.getAdapterPosition()).getNewsAuthor())) {
+        if (TextUtils.isEmpty(data.getNewsAuthor())) {
             newsHolder.authorNameTextView.setVisibility(View.GONE);
         } else {
-            newsHolder.authorNameTextView.setText(newsFeed.get(newsHolder.getAdapterPosition()).getNewsAuthor());
+            newsHolder.authorNameTextView.setText(data.getNewsAuthor());
+            newsHolder.authorNameTextView.setVisibility(View.VISIBLE);
         }
-        newsHolder.newsTitleTextView.setText(newsFeed.get(newsHolder.getAdapterPosition()).getNewsTitle());
+        newsHolder.newsTitleTextView.setText(data.getNewsTitle());
         newsHolder.newsTitleTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = newsFeed.get(position).getNewsWebUrl();
+                String url = data.getNewsUrl();
                 openThisWebPage(url);
             }
         });

@@ -31,24 +31,52 @@ public class News {
     /**
      * The url for the news
      */
-    private String mNewsWebUrl;
+    private String mNewsUrl;
 
-    // Create a new News object. Overloaded constructor, in one for example author's name
-    // might be missing
+    /**
+     * Create a new {@link News} object.
+     *
+     * @param newsSection is the section/topic the news is about
+     * @param newsTitle   is the title of the news
+     * @param newsUrl     the url of the page on the Guardian site displaying the news
+     */
+    public News(String newsSection, String newsTitle, String newsUrl) {
+        mNewsSection = newsSection;
+        mNewsTitle = newsTitle;
+        mNewsUrl = newsUrl;
+    }
 
-    News(String newsSection, String webPublicationDate, String newsTitle, String newsWebUrl) {
+
+    /**
+     * Create a new {@link News} object.
+     *
+     * @param newsSection        is the section/topic the news is about
+     * @param webPublicationDate is the date the news was published on the web
+     * @param newsTitle          is the title of the news
+     * @param newsUrl            the url of the page on the Guardian site displaying the news
+     */
+    public News(String newsSection, String webPublicationDate, String newsTitle, String newsUrl) {
         mNewsSection = newsSection;
         mWebPublicationDate = webPublicationDate;
         mNewsTitle = newsTitle;
-        mNewsWebUrl = newsWebUrl;
+        mNewsUrl = newsUrl;
     }
 
-    News(String newsSection, String webPublicationDate, String newsAuthor, String newsTitle, String newsWebUrl) {
+    /**
+     * Create a new {@link News} object.
+     *
+     * @param newsSection        is the section/topic the news is about
+     * @param webPublicationDate is the date the news was published on the web
+     * @param newsAuthor         is the author of the news
+     * @param newsTitle          is the title of the news
+     * @param newsUrl            the url of the page on the Guardian site displaying the news
+     */
+    public News(String newsSection, String webPublicationDate, String newsAuthor, String newsTitle, String newsUrl) {
         mNewsSection = newsSection;
         mWebPublicationDate = webPublicationDate;
         mNewsAuthor = newsAuthor;
         mNewsTitle = newsTitle;
-        mNewsWebUrl = newsWebUrl;
+        mNewsUrl = newsUrl;
     }
 
     /**
@@ -69,7 +97,7 @@ public class News {
      * Return the date of the publication of the news on the web
      */
     public String getWebPublicationDate() {
-        return mWebPublicationDate;
+        return  mWebPublicationDate;
     }
 
     /**
@@ -82,15 +110,16 @@ public class News {
     /**
      * Return the url to the news as a String
      */
-    public String getNewsWebUrl() {
-        return mNewsWebUrl;
+    public String getNewsUrl() {
+        return mNewsUrl;
     }
 
     /**
-     * Return the content of the News class as a                                                                      String
+     * Return the string representation of the {@link News} object
      */
     @Override
     public String toString() {
-        return "This News: " + "mNewsSection is " + mNewsSection + ", mWebPublicationDate is " + mWebPublicationDate + ", mNewsAuthor is " + mNewsAuthor + ", mNewsTitle is " + mNewsTitle + ", mNewsWebUrl is " + mNewsWebUrl;
+        return "This News: " + "mNewsSection is " + mNewsSection + ", mWebPublicationDate is " + mWebPublicationDate + ", mNewsAuthor is " + mNewsAuthor + ", mNewsTitle is " + mNewsTitle +
+                ", mNewsUrl is " + mNewsUrl;
     }
 }
