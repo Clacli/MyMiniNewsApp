@@ -19,16 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_card_recycler);
 
-        // Create a list of News
-        ArrayList<News> newsFeed = new ArrayList<>();
-        newsFeed.add(new News("clouds", "20 Jan 2018", "Mysterious writer", "Clouds topology", "urlOfCloudsWeb"));
-        newsFeed.add(new News("plants", "01 March 2018", "Flora", "It's springtime, we're back green", "urlGreens2"));
-        newsFeed.add(new News("clouds", "20 Jan 2018", "Clouds topology", "urlOfCloudsWeb"));
-        newsFeed.add(new News("plants", "01 March 2018", "Flora", "It's springtime, we're back green", "urlGreens2"));
-        newsFeed.add(new News("clouds", "20 Jan 2018", "Mysterious writer", "Clouds topology", "urlOfCloudsWeb"));
-        newsFeed.add(new News("plants", "01 March 2018", "It's springtime, we're back green", "urlGreens2"));
-        newsFeed.add(new News("clouds", "20 Jan 2018", "Mysterious writer", "Clouds topology", "urlOfCloudsWeb"));
-        newsFeed.add(new News("plants", "01 March 2018", "Flora", "It's springtime, we're back green", "urlGreens2"));
+        // Create a list of {@link News}
+        ArrayList<News> newsFeed = QueryUtils.extractNews();
 
         // Once you have added a RecyclerView widget to your layout, obtain a handle to the object,
         // connect it to a layout manager, and attach an adapter for the data to be displayed:
