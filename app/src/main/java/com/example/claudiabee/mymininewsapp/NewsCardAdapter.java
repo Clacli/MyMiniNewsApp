@@ -1,5 +1,8 @@
 package com.example.claudiabee.mymininewsapp;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -13,12 +16,38 @@ import java.util.List;
 
 public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCardViewHolder> {
 
+    private Context mContext;
+
+    NewsCardAdapter(List<News> newsFeed, Context context) {
+        this.newsFeed = newsFeed;
+        mContext = context;
+    }
+
     // Constructor for the custom adapter, so that it has a handle to the data that the
     // RecyclerView displays
     private List<News> newsFeed;
 
-    NewsCardAdapter(List<News> newsFeed) {
-        this.newsFeed = newsFeed;
+    /**
+     * This method specifies the content of each item of the RecyclerView.
+     */
+    @Override
+    public void onBindViewHolder(@NonNull NewsCardViewHolder newsHolder, final int position) {
+        newsHolder.newsSectionTextView.setText(newsFeed.get(newsHolder.getAdapterPosition()).getNewsSection());
+        newsHolder.dateOfWebPublicationTextView.setText(newsFeed.get(newsHolder.getAdapterPosition()).getWebPublicationDate());
+        // Check if an author is provided for this News or not
+        if (TextUtils.isEmpty(newsFeed.get(newsHolder.getAdapterPosition()).getNewsAuthor())) {
+            newsHolder.authorNameTextView.setVisibility(View.GONE);
+        } else {
+            newsHolder.authorNameTextView.setText(newsFeed.get(newsHolder.getAdapterPosition()).getNewsAuthor());
+        }
+        newsHolder.newsTitleTextView.setText(newsFeed.get(newsHolder.getAdapterPosition()).getNewsTitle());
+        newsHolder.newsTitleTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = newsFeed.get(position).getNewsWebUrl();
+                openThisWebPage(url);
+            }
+        });
     }
 
     // RecyclerView.Adapter ha three abstract methods that must be overridden
@@ -45,20 +74,13 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
         return new NewsCardViewHolder(singleNewsItem);
     }
 
-    /**
-     * This method specifies the content of each item of the RecyclerView.
-     */
-    @Override
-    public void onBindViewHolder(@NonNull NewsCardViewHolder newsHolder, int position) {
-        newsHolder.newsSectionTextView.setText(newsFeed.get(position).getNewsSection());
-        newsHolder.dateOfWebPublicationTextView.setText(newsFeed.get(position).getWebPublicationDate());
-        // Check if an author is provided for this News or not
-        if (TextUtils.isEmpty(newsFeed.get(position).getNewsAuthor())) {
-            newsHolder.authorNameTextView.setVisibility(View.GONE);
-        } else {
-            newsHolder.authorNameTextView.setText(newsFeed.get(position).getNewsAuthor());
+    // Helper method
+    private void openThisWebPage(String url) {
+        Uri webPage = Uri.parse(url);
+        Intent i = new Intent(Intent.ACTION_VIEW, webPage);
+        if (i.resolveActivity(mContext.getPackageManager()) != null) {
+            mContext.startActivity(i);
         }
-        newsHolder.newsTitleTextView.setText(newsFeed.get(position).getNewsTitle());
     }
 
     @Override
@@ -71,7 +93,7 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
     // providing a reference to the views for each data item and
     // initializing the views that belong to the items of the RicyclerView
     // inside the constructor of this custom View.Holder.
-    static class NewsCardViewHolder extends RecyclerView.ViewHolder {
+    public static class NewsCardViewHolder extends RecyclerView.ViewHolder {
         CardView newsCardView;
         TextView newsSectionTextView;
         TextView dateOfWebPublicationTextView;
@@ -86,5 +108,6 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
             authorNameTextView = itemView.findViewById(R.id.news_author);
             newsTitleTextView = itemView.findViewById(R.id.news_title);
         }
+
     }
 }

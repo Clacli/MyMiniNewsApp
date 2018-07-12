@@ -2,6 +2,7 @@ package com.example.claudiabee.mymininewsapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mNewsCardRecyclerView;
     private RecyclerView.LayoutManager mNewsCardLinearLayoutManager;
     private NewsCardAdapter mNewsCardAdapter;
+    private CardView newsItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize and use the adapter by calling the adapter's constructor and the
         // RecyclerView's setAdapter method
-        mNewsCardAdapter = new NewsCardAdapter(newsFeed);
+        mNewsCardAdapter = new NewsCardAdapter(newsFeed, this);
         mNewsCardRecyclerView.setAdapter(mNewsCardAdapter);
+
+
     }
 }
