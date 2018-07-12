@@ -51,7 +51,7 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
             newsHolder.authorNameTextView.setVisibility(View.VISIBLE);
         }
         newsHolder.newsTitleTextView.setText(data.getNewsTitle());
-        newsHolder.newsTitleTextView.setOnClickListener(new View.OnClickListener() {
+        newsHolder.newsCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String url = data.getNewsUrl();
