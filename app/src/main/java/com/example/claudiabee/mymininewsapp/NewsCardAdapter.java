@@ -36,11 +36,14 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
 
         final News data = newsFeed.get(position);
 
+        // Date of publication on the web yyyy-MM-dd
+        String dateOfPublication = data.getWebPublicationDate().substring(0, 10);
+
         // Check if a date of publication on the web is provided for this News or not
         if (TextUtils.isEmpty(data.getWebPublicationDate())) {
             newsHolder.dateOfWebPublicationTextView.setVisibility(View.GONE);
         } else {
-            newsHolder.dateOfWebPublicationTextView.setText(data.getWebPublicationDate());
+            newsHolder.dateOfWebPublicationTextView.setText(dateOfPublication);
             newsHolder.dateOfWebPublicationTextView.setVisibility(View.VISIBLE);
         }
         // Check if an author is provided for this News or not
