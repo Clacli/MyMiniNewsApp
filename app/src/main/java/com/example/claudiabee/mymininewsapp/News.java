@@ -14,9 +14,9 @@ public class News {
     private String mNewsSection;
 
     /**
-     * the date the news was publishes on the web
+     * The title of the news
      */
-    private String mWebPublicationDate;
+    private String mNewsTitle;
 
     /**
      * The news author's name
@@ -24,9 +24,9 @@ public class News {
     private String mNewsAuthor;
 
     /**
-     * The title of the news
+     * the date the news was publishes on the web
      */
-    private String mNewsTitle;
+    private String mDateOfWebPublication;
 
     /**
      * The url for the news
@@ -51,14 +51,14 @@ public class News {
      * Create a new {@link News} object.
      *
      * @param newsSection        is the section/topic the news is about
-     * @param webPublicationDate is the date the news was published on the web
      * @param newsTitle          is the title of the news
+     * @param dateOfWebPublication is the date the news was published on the web
      * @param newsUrl            the url of the page on the Guardian site displaying the news
      */
-    public News(String newsSection, String webPublicationDate, String newsTitle, String newsUrl) {
+    public News(String newsSection, String dateOfWebPublication, String newsTitle, String newsUrl) {
         mNewsSection = newsSection;
-        mWebPublicationDate = webPublicationDate;
         mNewsTitle = newsTitle;
+        mDateOfWebPublication = dateOfWebPublication;
         mNewsUrl = newsUrl;
     }
 
@@ -66,14 +66,14 @@ public class News {
      * Create a new {@link News} object.
      *
      * @param newsSection        is the section/topic the news is about
-     * @param webPublicationDate is the date the news was published on the web
-     * @param newsAuthor         is the author of the news
      * @param newsTitle          is the title of the news
+     * @param newsAuthor         is the author of the news
+     * @param dateOfWebPublication is the date the news was published on the web
      * @param newsUrl            the url of the page on the Guardian site displaying the news
      */
-    public News(String newsSection, String webPublicationDate, String newsAuthor, String newsTitle, String newsUrl) {
+    public News(String newsSection, String dateOfWebPublication, String newsAuthor, String newsTitle, String newsUrl) {
         mNewsSection = newsSection;
-        mWebPublicationDate = webPublicationDate;
+        mDateOfWebPublication = dateOfWebPublication;
         mNewsAuthor = newsAuthor;
         mNewsTitle = newsTitle;
         mNewsUrl = newsUrl;
@@ -87,6 +87,13 @@ public class News {
     }
 
     /**
+     * Return the title of the news
+     */
+    public String getNewsTitle() {
+        return mNewsTitle;
+    }
+
+    /**
      * Return the author's name of the news
      */
     public String getNewsAuthor() {
@@ -96,15 +103,8 @@ public class News {
     /**
      * Return the date of the publication of the news on the web
      */
-    public String getWebPublicationDate() {
-        return  mWebPublicationDate;
-    }
-
-    /**
-     * Return the title of the news
-     */
-    public String getNewsTitle() {
-        return mNewsTitle;
+    public String getDateOfWebPublication() {
+        return mDateOfWebPublication;
     }
 
     /**
@@ -119,7 +119,7 @@ public class News {
      */
     @Override
     public String toString() {
-        return "This News: " + "mNewsSection is " + mNewsSection + ", mWebPublicationDate is " + mWebPublicationDate + ", mNewsAuthor is " + mNewsAuthor + ", mNewsTitle is " + mNewsTitle +
+        return "This News: " + "mNewsSection is " + mNewsSection + ", mDateOfWebPublication is " + mDateOfWebPublication + ", mNewsAuthor is " + mNewsAuthor + ", mNewsTitle is " + mNewsTitle +
                 ", mNewsUrl is " + mNewsUrl;
     }
 }

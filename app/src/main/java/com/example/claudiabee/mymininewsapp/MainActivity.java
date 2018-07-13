@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
     // Declare member variable of MainActivity
     private RecyclerView mNewsCardRecyclerView;
     private RecyclerView.LayoutManager mNewsCardLinearLayoutManager;
