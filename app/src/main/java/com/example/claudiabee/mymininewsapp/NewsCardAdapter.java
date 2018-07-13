@@ -32,9 +32,11 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
      */
     @Override
     public void onBindViewHolder(@NonNull NewsCardViewHolder newsHolder, int position) {
-        newsHolder.newsSectionTextView.setText(newsFeed.get(newsHolder.getAdapterPosition()).getNewsSection());
 
         final News data = newsFeed.get(position);
+
+        // Set text of the section name
+        newsHolder.newsSectionTextView.setText(data.getNewsSection());
 
         // Date of publication on the web yyyy-MM-dd
         String dateOfPublication = data.getWebPublicationDate().substring(0, 10);
@@ -54,6 +56,11 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
             newsHolder.authorNameTextView.setVisibility(View.VISIBLE);
         }
         newsHolder.newsTitleTextView.setText(data.getNewsTitle());
+
+        // Hide the error message TextView
+        newsHolder.noDataMessageTextView.setVisibility(View.GONE);
+
+        // Send an intent to get the news on the Guardian site
         newsHolder.newsCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,6 +119,7 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
         TextView dateOfWebPublicationTextView;
         TextView authorNameTextView;
         TextView newsTitleTextView;
+        TextView noDataMessageTextView;
 
         NewsCardViewHolder(View itemView) {
             super(itemView);
@@ -120,6 +128,7 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
             dateOfWebPublicationTextView = itemView.findViewById(R.id.date_of_web_publication);
             authorNameTextView = itemView.findViewById(R.id.news_author);
             newsTitleTextView = itemView.findViewById(R.id.news_title);
+            noDataMessageTextView = itemView.findViewById(R.id.no_data_message);
         }
 
     }
