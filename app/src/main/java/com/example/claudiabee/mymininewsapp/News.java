@@ -11,17 +11,17 @@ public class News {
     /**
      * The name of the section of the newspaper
      */
-    private String mNewsSection;
+    private String mSection;
 
     /**
      * The title of the news
      */
-    private String mNewsTitle;
+    private String mTitle;
 
     /**
      * The news author's name
      */
-    private String mNewsAuthor;
+    private String mAuthor;
 
     /**
      * the date the news was publishes on the web
@@ -31,73 +31,44 @@ public class News {
     /**
      * The url for the news
      */
-    private String mNewsUrl;
+    private String mUrl;
 
     /**
      * Create a new {@link News} object.
      *
-     * @param newsSection is the section/topic the news is about
-     * @param newsTitle   is the title of the news
-     * @param newsUrl     the url of the page on the Guardian site displaying the news
-     */
-    public News(String newsSection, String newsTitle, String newsUrl) {
-        mNewsSection = newsSection;
-        mNewsTitle = newsTitle;
-        mNewsUrl = newsUrl;
-    }
-
-
-    /**
-     * Create a new {@link News} object.
-     *
-     * @param newsSection        is the section/topic the news is about
-     * @param newsTitle          is the title of the news
+     * @param section        is the section/topic the news is about
+     * @param title          is the title of the news
+     * @param author         is the author of the news
      * @param dateOfWebPublication is the date the news was published on the web
-     * @param newsUrl            the url of the page on the Guardian site displaying the news
+     * @param url            the url of the page on the Guardian site displaying the news
      */
-    public News(String newsSection, String dateOfWebPublication, String newsTitle, String newsUrl) {
-        mNewsSection = newsSection;
-        mNewsTitle = newsTitle;
+    public News(String section, String dateOfWebPublication, String author, String title, String url) {
+        mSection = section;
         mDateOfWebPublication = dateOfWebPublication;
-        mNewsUrl = newsUrl;
-    }
-
-    /**
-     * Create a new {@link News} object.
-     *
-     * @param newsSection        is the section/topic the news is about
-     * @param newsTitle          is the title of the news
-     * @param newsAuthor         is the author of the news
-     * @param dateOfWebPublication is the date the news was published on the web
-     * @param newsUrl            the url of the page on the Guardian site displaying the news
-     */
-    public News(String newsSection, String dateOfWebPublication, String newsAuthor, String newsTitle, String newsUrl) {
-        mNewsSection = newsSection;
-        mDateOfWebPublication = dateOfWebPublication;
-        mNewsAuthor = newsAuthor;
-        mNewsTitle = newsTitle;
-        mNewsUrl = newsUrl;
+        mAuthor = author;
+        mTitle = title;
+        mUrl = url;
     }
 
     /**
      * Return the Section the news belongs to on the Guardian site
      */
     public String getNewsSection() {
-        return mNewsSection;
+        return mSection;
     }
 
     /**
      * Return the title of the news
      */
     public String getNewsTitle() {
-        return mNewsTitle;
+        return mTitle;
     }
 
     /**
      * Return the author's name of the news
      */
     public String getNewsAuthor() {
-        return mNewsAuthor;
+        return mAuthor;
     }
 
     /**
@@ -111,7 +82,7 @@ public class News {
      * Return the url to the news as a String
      */
     public String getNewsUrl() {
-        return mNewsUrl;
+        return mUrl;
     }
 
     /**
@@ -119,7 +90,6 @@ public class News {
      */
     @Override
     public String toString() {
-        return "This News: " + "mNewsSection is " + mNewsSection + ", mDateOfWebPublication is " + mDateOfWebPublication + ", mNewsAuthor is " + mNewsAuthor + ", mNewsTitle is " + mNewsTitle +
-                ", mNewsUrl is " + mNewsUrl;
+        return "This News: " + "mSection is " + mSection + ", mDateOfWebPublication is " + mDateOfWebPublication + ", mAuthor is " + mAuthor + ", mTitle is " + mTitle + ", mUrl is " + mUrl;
     }
 }

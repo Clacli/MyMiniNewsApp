@@ -35,6 +35,33 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
     private List<News> newsFeed;
 
     /**
+     * Return the formatted date String (i.e. "Mar 3, 1984") from a Date Object.
+     */
+    private String formatDate(String unformattedDate) {
+
+        // Initialize an instance of SimpleDateFormat configuring it to the format I already have
+        SimpleDateFormat inputPatternFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
+
+        // Initialize an instance of SimpleDateFormat configuring it to the desired format
+        SimpleDateFormat desiredPatternFormat = new SimpleDateFormat("EEE MMM d,' ' yyyy", Locale.getDefault());
+
+        String desiredPatternDate = "";
+
+        try {
+            // Create a Date object, required by SimpleDateFormat, calling parse() method on
+            // inputPatternDate passing as argument dateOfWebPublication String.
+            Date webPublicationDateObj = inputPatternFormat.parse(unformattedDate);
+
+            // C
+            return desiredPatternFormat.format(webPublicationDateObj);
+
+        } catch (ParseException e) {
+            Log.e(LOG_TAG, "Problem in parsing ");
+        }
+        return desiredPatternDate;
+    }
+
+    /**
      * This method is called when the {@link NewsCardViewHolder} needs to be initialized.
      * It is specified the layout that each item of the RecyclerView should use, inflating the layout
      * using LayoutInflater, passing the output of the constructor of the custom ViewHolder.
@@ -109,42 +136,6 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
         return newsFeed.size();
     }
 
-    /**
-     * Return the formatted date String (i.e. "Mar 3, 1984") from a Date Object.
-     */
-    private String formatDate(String unformattedDate) {
-
-        // Initialize an instance of SimpleDateFormat configuring it to the format I already have
-        SimpleDateFormat inputPatternFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
-
-        // Initialize an instance of SimpleDateFormat configuring it to the desired format
-        SimpleDateFormat desideredPatternFormat = new SimpleDateFormat("EEE MMM d,' ' yyyy", Locale.getDefault());
-
-        String desideredPatternDate = "";
-
-        try {
-            // Create a Date object, required by SimpleDateFormat, calling parse() method on
-            // inputPatternDate passing as argument dateOfWebPublication String.
-            Date webPublicationDateObj = inputPatternFormat.parse(unformattedDate);
-
-            // C
-            return desideredPatternFormat.format(webPublicationDateObj);
-
-        } catch (ParseException e) {
-            Log.e(LOG_TAG, "Problem in parsing ");
-        }
-        return desideredPatternDate;
-    }
-
-    // Helper method
-    private void openThisWebPage(String url) {
-        Uri webPage = Uri.parse(url);
-        Intent i = new Intent(Intent.ACTION_VIEW, webPage);
-        if (i.resolveActivity(mContext.getPackageManager()) != null) {
-            mContext.startActivity(i);
-        }
-    }
-
     // Define a custom class that extends RecyclerView.ViewHolder.
     // We are going to reuse the card_item layout, that represent a news item,
     // providing a reference to the views for each data item and
@@ -170,4 +161,14 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
         }
 
     }
+
+    // Helper method
+    private void openThisWebPage(String url) {
+        Uri webPage = Uri.parse(url);
+        Intent i = new Intent(Intent.ACTION_VIEW, webPage);
+        if (i.resolveActivity(mContext.getPackageManager()) != null) {
+            mContext.startActivity(i);
+        }
+    }
+
 }
