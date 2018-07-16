@@ -12,6 +12,12 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
+    /**
+     * URL for news data from the Guardian dataset
+     */
+    // Add a personal key at the end of the url String before trying the app
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=science&format=json&show-tags=contributor&api-key=";
+
     // Declare member variable of MainActivity
     private RecyclerView mNewsCardRecyclerView;
     private RecyclerView.LayoutManager mNewsCardLinearLayoutManager;
@@ -43,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         mNewsCardAdapter = new NewsCardAdapter(newsFeed, this);
         mNewsCardRecyclerView.setAdapter(mNewsCardAdapter);
 
-
     }
+
+    // Define EarthquakeAsyncTask
 }
