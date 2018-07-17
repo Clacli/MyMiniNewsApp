@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class QueryUtils {
 
-
+    /** Tag to use in log message*/
     private static final String LOG_TAG = QueryUtils.class.getName();
 
     /**
@@ -48,7 +48,7 @@ public class QueryUtils {
         try {
             jsonResponse = makeHttpRequest(url);
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Error closing input stream", e);
+            Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
         // Extract relevant fields from the JSON response and create a {@link List<News>} object
@@ -68,7 +68,7 @@ public class QueryUtils {
         try {
             url = new URL(stringUrl);
         } catch (MalformedURLException e) {
-            Log.e(LOG_TAG, "Error with creating URL ", e);
+            Log.e(LOG_TAG, "Problem building the URL ", e);
         }
         return url;
     }
@@ -226,10 +226,10 @@ public class QueryUtils {
                     authorsName = null;
                 }
 
-                // Create a News object instance
+                // Create a {@link News} object instance
                 News newsItem = new News(section, dateOfWebPublication, authorsName, newsTitle, newsUrl);
 
-                // Add this newsItem to the list of News
+                // Add this newsItem to the list of {@link News}
                 newsFeed.add(newsItem);
             }
 

@@ -36,11 +36,11 @@ public class News {
     /**
      * Create a new {@link News} object.
      *
-     * @param section        is the section/topic the news is about
-     * @param title          is the title of the news
-     * @param author         is the author of the news
+     * @param section              is the section/topic the news is about
+     * @param title                is the title of the news
+     * @param author               is the author of the news
      * @param dateOfWebPublication is the date the news was published on the web
-     * @param url            the url of the page on the Guardian site displaying the news
+     * @param url                  the url of the page on the Guardian site displaying the news
      */
     public News(String section, String dateOfWebPublication, String author, String title, String url) {
         mSection = section;

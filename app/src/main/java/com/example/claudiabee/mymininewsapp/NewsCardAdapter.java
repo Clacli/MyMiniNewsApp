@@ -21,6 +21,7 @@ import java.util.Locale;
 
 public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCardViewHolder> {
 
+    /** Tag to use in log message*/
     private final static String LOG_TAG = NewsCardAdapter.class.getSimpleName();
 
     private Context mContext;
