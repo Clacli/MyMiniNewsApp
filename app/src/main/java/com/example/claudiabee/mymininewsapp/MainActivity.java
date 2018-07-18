@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // If there is a valid list of {@linkNews}, then add them to the adapter's
         // data set.
        if (newsFeed != null && !newsFeed.isEmpty()) {
+
            mEmptyView.setVisibility(View.GONE);
            updateUi(newsFeed);
        }
