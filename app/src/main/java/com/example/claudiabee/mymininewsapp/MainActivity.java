@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoaderReset(@NonNull Loader<List<News>> loader) {
         // Loader reset, so we can clear out our existing data
-
+        mNewsCardAdapter = null;
         Log.d(LOG_TAG, "loader.reset?");
     }
 
