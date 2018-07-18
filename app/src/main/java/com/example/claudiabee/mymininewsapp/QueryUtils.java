@@ -222,7 +222,6 @@ public class QueryUtils {
                     // If an error is thrown when trying to extract the author's name in the try block,
                     // catch the exception here, so the app doesn't crash.
                     // Print a log message with the message from the exception
-                    Log.e(LOG_TAG, "Problem parsing the newsFeed JSON response, no author is provided for this piece of news", e);
                     authorsName = null;
                 }
 
