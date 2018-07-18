@@ -71,7 +71,8 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
     @Override
     public NewsCardViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View singleNewsItem = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_card_item, viewGroup, false);
-        return new NewsCardViewHolder(singleNewsItem);
+        NewsCardViewHolder newsCardViewHolder = new NewsCardViewHolder(singleNewsItem);
+        return newsCardViewHolder;
     }
 
     /**
@@ -116,8 +117,6 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
             }
         });
 
-        // Hide the error message TextView
-        newsHolder.noDataMessageTextView.setVisibility(View.GONE);
     }
 
     @Override
@@ -148,7 +147,6 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
         TextView newsTitleTextView;
         TextView authorNameTextView;
         TextView dateOfWebPublicationTextView;
-        TextView noDataMessageTextView;
 
 
         NewsCardViewHolder(View itemView) {
@@ -158,7 +156,6 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
             newsTitleTextView = itemView.findViewById(R.id.news_title);
             authorNameTextView = itemView.findViewById(R.id.news_author);
             dateOfWebPublicationTextView = itemView.findViewById(R.id.date_of_web_publication);
-            noDataMessageTextView = itemView.findViewById(R.id.no_data_message);
         }
 
     }
