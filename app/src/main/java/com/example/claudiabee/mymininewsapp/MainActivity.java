@@ -1,7 +1,10 @@
 package com.example.claudiabee.mymininewsapp;
 
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.Loader;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      * URL to query for news data from the Guardian dataset
      */
     // Add a personal key at the end of the url String before trying the app
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=music&format=json&show-tags=contributor&api-key=";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=europe,culrure,politics&format=json&show-tags=contributor&api-key=ADD_KE_HERE";
 
     /** Constant value for the earthquake loader */
     public static final int LOADER_ID = 0;
@@ -55,10 +58,23 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // Set the mNewsCardLinearLayoutManager on the newsCardRecyclerView
         mNewsCardRecyclerView.setLayoutManager(mNewsCardLinearLayoutManager);
 
+        // Check for network connectivity.
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        // Prepare the Loader. Either re-connect with an existing one, or start a new one
-        getLoaderManager().initLoader(LOADER_ID, null, this);
-        Log.d(LOG_TAG, "Verifying Loader behaviour: init loader");
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        boolean isConnected = networkInfo != null &&
+                networkInfo.isConnectedOrConnecting();
+
+        // If there is internet connectivity initialize the loader.
+        if (isConnected) {
+            // Prepare the Loader. Either re-connect with an existing one, or start a new one
+            getLoaderManager().initLoader(LOADER_ID, null, this);
+            Log.d(LOG_TAG, "Verifying Loader behaviour: init loader");
+        } else {
+            mEmptyView.setText(R.string.no_internet_connection_message);
+        }
+
     }
 
     // 1 First Loader callback to override onCreateLoader(){}
