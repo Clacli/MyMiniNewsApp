@@ -1,5 +1,5 @@
 # MyMiniNewsApp
-
+project 6
 Udacity - Google Android Basics Nanodegree Scholarship 2017/2018
 #madewithudacity #googleudacityscholars #abndproject 
 
