@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- The name of the app -->
+    <string name="app_name">La Mia Mini News App</string>
+
+    <!-- The name of the topic of the news -->
+    <string name="news_section">News Section</string>
+
+    <!-- The date of the publication of the news on the web -->
+    <string name="date_of_web_publication">Data di Pubblicazione sul Web</string>
+
+    <!-- The author's name -->
+    <string name="author_s_name">Nome dell\'autore</string>
+
+    <!-- The title of the news -->
+    <string name="news_title">Titolo della notizia</string>
+
+    <!-- The message displayed in case it was not possible to retrieve any news -->
+    <string name="no_article_message">
+        Ooops&#8230;\nSembra che non ci siano notizie su questo argomento.\n
+        Prova a controllare più tardi
+    </string>
+
+    <!-- The message displayed in case there is no internet connection -->
+    <string name="no_internet_connection_message">Oh oh!\nManca la Connessione a Internet</string>
+
+</resources>
