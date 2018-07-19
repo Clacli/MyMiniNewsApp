@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      * URL to query for news data from the Guardian dataset
      */
     // Add a personal key at the end of the url String before trying the app
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=europe,culrure,politics&format=json&show-tags=contributor&api-key=test";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=europe,culrure,politics&format=json&show-tags=contributor&api-key=ADD_YOUR_KEY_HERE";
 
     /**
      * Constant value for the earthquake loader
