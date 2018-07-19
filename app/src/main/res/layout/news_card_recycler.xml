@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/news_card_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <!-- Progress bar displays while app is loading from the internet -->
+    <ProgressBar
+        android:id="@+id/loading_spinner"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
     <!-- Empty view is only visible when the list has no items. -->
     <TextView
@@ -17,11 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:drawableTop="@drawable/ic_sentiment_dissatisfied"
-        android:drawablePadding="24dp"
         android:padding="16dp"
+        android:textColor="@android:color/background_dark"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/background_dark"/>
+        android:textStyle="bold" />
 
 </RelativeLayout>

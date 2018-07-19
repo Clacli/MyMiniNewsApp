@@ -32,10 +32,10 @@
                 android:paddingRight="@dimen/card_text_side_padding"
                 android:paddingStart="@dimen/card_text_side_padding"
                 android:paddingTop="@dimen/section_text_vertical_padding"
-                tools:text="@string/news_section"
-                android:textSize="@dimen/section_text_size"
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"/>
+                android:textSize="@dimen/section_text_size"
+                android:textStyle="bold"
+                tools:text="@string/news_section" />
 
             <TextView
                 android:id="@+id/news_title"
@@ -48,9 +48,9 @@
                 android:paddingRight="@dimen/card_text_side_padding"
                 android:paddingStart="@dimen/card_text_side_padding"
                 android:paddingTop="@dimen/title_padding_top"
-                tools:text="@string/news_title"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/title_text_size"/>
+                android:textSize="@dimen/title_text_size"
+                tools:text="@string/news_title" />
 
             <TextView
                 android:id="@+id/news_author"
@@ -62,22 +62,22 @@
                 android:paddingLeft="@dimen/card_text_side_padding"
                 android:paddingRight="@dimen/card_text_side_padding"
                 android:paddingStart="@dimen/card_text_side_padding"
-                tools:text="@string/author_s_name"
-                android:textSize="@dimen/author_text_size"/>
+                android:textSize="@dimen/author_text_size"
+                tools:text="@string/author_s_name" />
 
             <TextView
                 android:id="@+id/date_of_web_publication"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:paddingBottom="@dimen/date_padding"
                 android:paddingEnd="@dimen/card_text_side_padding"
                 android:paddingLeft="@dimen/card_text_side_padding"
                 android:paddingRight="@dimen/card_text_side_padding"
                 android:paddingStart="@dimen/card_text_side_padding"
                 android:paddingTop="@dimen/date_padding"
-                android:paddingBottom="@dimen/date_padding"
-                tools:text="@string/date_of_web_publication"
-                android:textSize="@dimen/date_text_size"/>
+                android:textSize="@dimen/date_text_size"
+                tools:text="@string/date_of_web_publication" />
 
         </LinearLayout>
 

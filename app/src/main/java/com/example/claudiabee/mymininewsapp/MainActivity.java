@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      * URL to query for news data from the Guardian dataset
      */
     // Add a personal key at the end of the url String before trying the app
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=europe,culrure,politics&format=json&show-tags=contributor&api-key=ADD_YOUR_KEY_HERE";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=europe,culrure,politics&format=json&show-tags=contributor&api-key=test";
 
     /**
      * Constant value for the earthquake loader
@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private RecyclerView mNewsCardRecyclerView;
     // This is the empty view
     TextView mEmptyView;
+    // This is the loading indicator
+    View loadingIndicator;
     // This is the Layout that manages the position of the {@link CardView}
     private RecyclerView.LayoutManager mNewsCardLinearLayoutManager;
     // This is the Adapter used to display the data of the list.
@@ -55,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // Create an instance of the empty TextView
         mEmptyView = (TextView) findViewById(R.id.empty_news_feed);
+
+        loadingIndicator = findViewById(R.id.loading_spinner);
 
         // Create a new LinearLayout manager to manage the positioning of the news card view items
         mNewsCardLinearLayoutManager = new LinearLayoutManager(this);
@@ -74,9 +78,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             getLoaderManager().initLoader(LOADER_ID, null, this);
             Log.d(LOG_TAG, "Verifying Loader behaviour: init loader");
         } else {
+            loadingIndicator.setVisibility(View.GONE);
             mEmptyView.setText(R.string.no_internet_connection_message);
         }
-
     }
 
     // 1 First Loader callback to override onCreateLoader(){}
@@ -92,13 +96,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(@NonNull Loader<List<News>> loader, List<News> newsFeed) {
 
+        // Hide the loading indicator
+        loadingIndicator.setVisibility(View.GONE);
+
         // Set empty state text to display "No earthquakes found."
         mEmptyView.setText(R.string.no_article_message);
+
+        // Clear the adapter of previous existing data
+        mNewsCardAdapter = null;
 
         // If there is a valid list of {@linkNews}, then add them to the adapter's
         // data set.
         if (newsFeed != null && !newsFeed.isEmpty()) {
-
             mEmptyView.setVisibility(View.GONE);
             updateUi(newsFeed);
         }

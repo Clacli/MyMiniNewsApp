@@ -23,7 +23,9 @@ import java.util.List;
  */
 public class QueryUtils {
 
-    /** Tag to use in log message*/
+    /**
+     * Tag to use in log message
+     */
     private static final String LOG_TAG = QueryUtils.class.getName();
 
     /**
