@@ -19,16 +19,20 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<News>> {
 
-    /** Tag to use in log message*/
+    /**
+     * Tag to use in log message
+     */
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     /**
      * URL to query for news data from the Guardian dataset
      */
     // Add a personal key at the end of the url String before trying the app
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=europe,culrure,politics&format=json&show-tags=contributor&api-key=ADD_KE_HERE";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=europe,culrure,politics&format=json&show-tags=contributor&api-key=ADD_YOUR_KEY_HERE";
 
-    /** Constant value for the earthquake loader */
+    /**
+     * Constant value for the earthquake loader
+     */
     public static final int LOADER_ID = 0;
 
 
@@ -59,12 +63,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mNewsCardRecyclerView.setLayoutManager(mNewsCardLinearLayoutManager);
 
         // Check for network connectivity.
-        ConnectivityManager connectivityManager =
-                (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        boolean isConnected = networkInfo != null &&
-                networkInfo.isConnectedOrConnecting();
+        boolean isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
 
         // If there is internet connectivity initialize the loader.
         if (isConnected) {
@@ -95,11 +97,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // If there is a valid list of {@linkNews}, then add them to the adapter's
         // data set.
-       if (newsFeed != null && !newsFeed.isEmpty()) {
+        if (newsFeed != null && !newsFeed.isEmpty()) {
 
-           mEmptyView.setVisibility(View.GONE);
-           updateUi(newsFeed);
-       }
+            mEmptyView.setVisibility(View.GONE);
+            updateUi(newsFeed);
+        }
         Log.d(LOG_TAG, "Verifying Loader behaviour: onLoadFinished.");
     }
 

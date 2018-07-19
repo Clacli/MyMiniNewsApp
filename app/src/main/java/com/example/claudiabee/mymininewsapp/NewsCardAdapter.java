@@ -21,19 +21,20 @@ import java.util.Locale;
 
 public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCardViewHolder> {
 
-    /** Tag to use in log message*/
+    /**
+     * Tag to use in log message
+     */
     private final static String LOG_TAG = NewsCardAdapter.class.getSimpleName();
 
     private Context mContext;
+    // Constructor for the custom adapter, so that it has a handle to the data that the
+    // RecyclerView displays
+    private List<News> newsFeed;
 
     NewsCardAdapter(List<News> newsFeed, Context context) {
         this.newsFeed = newsFeed;
         mContext = context;
     }
-
-    // Constructor for the custom adapter, so that it has a handle to the data that the
-    // RecyclerView displays
-    private List<News> newsFeed;
 
     /**
      * Return the formatted date String (i.e. "Mar 3, 1984") from a Date Object.
@@ -136,6 +137,15 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
         return newsFeed.size();
     }
 
+    // Helper method
+    private void openThisWebPage(String url) {
+        Uri webPage = Uri.parse(url);
+        Intent i = new Intent(Intent.ACTION_VIEW, webPage);
+        if (i.resolveActivity(mContext.getPackageManager()) != null) {
+            mContext.startActivity(i);
+        }
+    }
+
     // Define a custom class that extends RecyclerView.ViewHolder.
     // We are going to reuse the card_item layout, that represent a news item,
     // providing a reference to the views for each data item and
@@ -158,15 +168,6 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
             dateOfWebPublicationTextView = itemView.findViewById(R.id.date_of_web_publication);
         }
 
-    }
-
-    // Helper method
-    private void openThisWebPage(String url) {
-        Uri webPage = Uri.parse(url);
-        Intent i = new Intent(Intent.ACTION_VIEW, webPage);
-        if (i.resolveActivity(mContext.getPackageManager()) != null) {
-            mContext.startActivity(i);
-        }
     }
 
 }
