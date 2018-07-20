@@ -246,6 +246,4 @@ public class QueryUtils {
         // return the list of News object
         return newsFeed;
     }
-
-
 }

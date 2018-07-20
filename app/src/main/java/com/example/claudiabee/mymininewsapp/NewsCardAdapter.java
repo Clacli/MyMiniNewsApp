@@ -19,6 +19,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCardViewHolder> {
 
     /**
@@ -36,31 +39,22 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
         mContext = context;
     }
 
-    /**
-     * Return the formatted date String (i.e. "Mar 3, 1984") from a Date Object.
-     */
-    private String formatDate(String unformattedDate) {
+    // Define a custom class that extends RecyclerView.ViewHolder.
+    // We are going to reuse the card_item layout, that represent a news item,
+    // providing a reference to the views for each data item and
+    // initializing the views that belong to the items of the RicyclerView
+    // inside the constructor of this custom View.Holder.
+    public static class NewsCardViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.card_item) CardView newsCardView;
+        @BindView(R.id.news_section) TextView newsSectionTextView;
+        @BindView(R.id.news_title) TextView newsTitleTextView;
+        @BindView(R.id.news_author) TextView authorNameTextView;
+        @BindView(R.id.date_of_web_publication) TextView dateOfWebPublicationTextView;
 
-        // Initialize an instance of SimpleDateFormat configuring it to the format I already have
-        SimpleDateFormat inputPatternFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
-
-        // Initialize an instance of SimpleDateFormat configuring it to the desired format
-        SimpleDateFormat desiredPatternFormat = new SimpleDateFormat("EEE MMM d,' ' yyyy", Locale.getDefault());
-
-        String desiredPatternDate = "";
-
-        try {
-            // Create a Date object, required by SimpleDateFormat, calling parse() method on
-            // inputPatternDate passing as argument dateOfWebPublication String.
-            Date webPublicationDateObj = inputPatternFormat.parse(unformattedDate);
-
-            // C
-            return desiredPatternFormat.format(webPublicationDateObj);
-
-        } catch (ParseException e) {
-            Log.e(LOG_TAG, "Problem in parsing ");
+        NewsCardViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
         }
-        return desiredPatternDate;
     }
 
     /**
@@ -146,28 +140,30 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardAdapter.NewsCa
         }
     }
 
-    // Define a custom class that extends RecyclerView.ViewHolder.
-    // We are going to reuse the card_item layout, that represent a news item,
-    // providing a reference to the views for each data item and
-    // initializing the views that belong to the items of the RicyclerView
-    // inside the constructor of this custom View.Holder.
-    public static class NewsCardViewHolder extends RecyclerView.ViewHolder {
-        CardView newsCardView;
-        TextView newsSectionTextView;
-        TextView newsTitleTextView;
-        TextView authorNameTextView;
-        TextView dateOfWebPublicationTextView;
+    /**
+     * Return the formatted date String (i.e. "Mar 3, 1984") from a Date Object.
+     */
+    private String formatDate(String unformattedDate) {
 
+        // Initialize an instance of SimpleDateFormat configuring it to the format I already have
+        SimpleDateFormat inputPatternFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
 
-        NewsCardViewHolder(View itemView) {
-            super(itemView);
-            newsCardView = itemView.findViewById(R.id.card_item);
-            newsSectionTextView = itemView.findViewById(R.id.news_section);
-            newsTitleTextView = itemView.findViewById(R.id.news_title);
-            authorNameTextView = itemView.findViewById(R.id.news_author);
-            dateOfWebPublicationTextView = itemView.findViewById(R.id.date_of_web_publication);
+        // Initialize an instance of SimpleDateFormat configuring it to the desired format
+        SimpleDateFormat desiredPatternFormat = new SimpleDateFormat("EEE MMM d,' ' yyyy", Locale.getDefault());
+
+        String desiredPatternDate = "";
+
+        try {
+            // Create a Date object, required by SimpleDateFormat, calling parse() method on
+            // inputPatternDate passing as argument dateOfWebPublication String.
+            Date webPublicationDateObj = inputPatternFormat.parse(unformattedDate);
+
+            // C
+            return desiredPatternFormat.format(webPublicationDateObj);
+
+        } catch (ParseException e) {
+            Log.e(LOG_TAG, "Problem in parsing ");
         }
-
+        return desiredPatternDate;
     }
-
 }

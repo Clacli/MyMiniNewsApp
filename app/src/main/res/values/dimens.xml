@@ -3,7 +3,7 @@
     <dimen name="card_text_side_padding">8dp</dimen>
     <dimen name="card_corner_radius">4dp</dimen>
     <dimen name="card_elevation">4dp</dimen>
-    <dimen name="section_text_vertical_padding">8dp</dimen>
+    <dimen name="section_and_title_text_padding_Bottom">8dp</dimen>
     <dimen name="text_container_padding">16dp</dimen>
     <dimen name="section_text_size">18sp</dimen>
     <dimen name="title_padding_top">16dp</dimen>

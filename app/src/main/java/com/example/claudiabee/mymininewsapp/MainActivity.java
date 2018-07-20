@@ -17,6 +17,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<News>> {
 
     /**
@@ -28,37 +31,33 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      * URL to query for news data from the Guardian dataset
      */
     // Add a personal key at the end of the url String before trying the app
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=europe,culrure,politics&format=json&show-tags=contributor&api-key=ADD_YOUR_STUDENT_API_KEY_HERE";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=europe,culrure,politics&format=json&show-tags=contributor&api-key=ADD_YOUR_KEY_HERE";
 
     /**
      * Constant value for the earthquake loader
      */
     public static final int LOADER_ID = 0;
 
+    //private
+    @BindView(R.id.news_card_recycler_view) RecyclerView mNewsCardRecyclerView;
 
-    private RecyclerView mNewsCardRecyclerView;
     // This is the empty view
-    TextView mEmptyView;
+    @BindView(R.id.empty_news_feed) TextView mEmptyView;
+
     // This is the loading indicator
-    View loadingIndicator;
+
+    @BindView(R.id.loading_spinner) View mLoadingIndicator;
+
     // This is the Layout that manages the position of the {@link CardView}
     private RecyclerView.LayoutManager mNewsCardLinearLayoutManager;
     // This is the Adapter used to display the data of the list.
     private NewsCardAdapter mNewsCardAdapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_card_recycler);
-
-        // Create an instance of the MyCustomRecyclerView
-        mNewsCardRecyclerView = (RecyclerView) findViewById(R.id.news_card_recycler_view);
-
-        // Create an instance of the empty TextView
-        mEmptyView = (TextView) findViewById(R.id.empty_news_feed);
-
-        loadingIndicator = findViewById(R.id.loading_spinner);
+        ButterKnife.bind(this);
 
         // Create a new LinearLayout manager to manage the positioning of the news card view items
         mNewsCardLinearLayoutManager = new LinearLayoutManager(this);
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             getLoaderManager().initLoader(LOADER_ID, null, this);
             Log.d(LOG_TAG, "Verifying Loader behaviour: init loader");
         } else {
-            loadingIndicator.setVisibility(View.GONE);
+            mLoadingIndicator.setVisibility(View.GONE);
             mEmptyView.setText(R.string.no_internet_connection_message);
         }
     }
@@ -97,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(@NonNull Loader<List<News>> loader, List<News> newsFeed) {
 
         // Hide the loading indicator
-        loadingIndicator.setVisibility(View.GONE);
+        mLoadingIndicator.setVisibility(View.GONE);
 
         // Set empty state text to display "No earthquakes found."
         mEmptyView.setText(R.string.no_article_message);
