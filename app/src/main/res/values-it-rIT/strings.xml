@@ -16,7 +16,7 @@
     <string name="news_title">Titolo della notizia</string>
 
     <!-- The message displayed in case it was not possible to retrieve any news -->
-    <string name="no_article_message">
+    <string name="no_article_found">
         Ooops&#8230;\nSembra che non ci siano notizie su questo argomento.\n
         Prova a controllare più tardi
     </string>

@@ -17,10 +17,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<News>> {
+
+    // Bind resources with Butter Knife
+    @BindString(R.string.no_internet_connection_message) String noInternetConnectionMessage;
+    @BindString(R.string.no_article_found) String noArticleFound;
 
     /**
      * Tag to use in log message
@@ -78,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             Log.d(LOG_TAG, "Verifying Loader behaviour: init loader");
         } else {
             mLoadingIndicator.setVisibility(View.GONE);
-            mEmptyView.setText(R.string.no_internet_connection_message);
+            mEmptyView.setText(noInternetConnectionMessage);
         }
     }
 
@@ -99,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mLoadingIndicator.setVisibility(View.GONE);
 
         // Set empty state text to display "No earthquakes found."
-        mEmptyView.setText(R.string.no_article_message);
+        mEmptyView.setText(noArticleFound);
 
         // Clear the adapter of previous existing data
         mNewsCardAdapter = null;

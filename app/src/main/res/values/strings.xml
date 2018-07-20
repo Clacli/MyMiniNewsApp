@@ -16,7 +16,7 @@
     <string name="news_title">News Title</string>
 
     <!-- The message displayed in case it was not possible to retrieve any news -->
-    <string name="no_article_message">Ooops&#8230;\nIt seems that there are no articles about this topic at the moment.\nPlease try and check out later</string>
+    <string name="no_article_found">Ooops&#8230;\nIt seems that there are no articles about this topic at the moment.\nPlease try and check out later</string>
 
     <!-- The message displayed in case there is no internet connection -->
     <string name="no_internet_connection_message">No Internet Connection</string>
