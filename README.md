@@ -32,3 +32,7 @@ http://www.tutorialspoint.com/android/android_json_parser.htm
 
 To format date
 https://discussions.udacity.com/t/using-datetimeformatter-below-minsdk26/711152/6
+
+I integrated Butter Knife library to the code for easy initialization by eliminating the use of findViewById. 
+Butter Knife Copyright 2013 Jake Wharton
+http://jakewharton.github.io/butterknife/
