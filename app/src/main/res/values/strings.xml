@@ -30,6 +30,6 @@
     <!-- Strings to be used for the Preference Labels -->
     <string name="settings_topic_label">Topic</string>
     <string name="settings_topic_key" translatable="false">Topic</string>
-    <string name="settings_topic_default" translatable="false">No topic chosen yet</string>
+    <string name="settings_topic_default" translatable="false">hope</string>
 
 </resources>

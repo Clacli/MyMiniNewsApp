@@ -33,7 +33,7 @@
     <!-- Strings to be used for the Preference Labels -->
     <string name="settings_topic_label">Argomento</string>
     <string name="settings_topic_key" translatable="false">Argomento</string>
-    <string name="settings_topic_default" translatable="false">Non hai ancora scelto</string>
+    <string name="settings_topic_default" translatable="false">hope</string>
 
 
 </resources>
