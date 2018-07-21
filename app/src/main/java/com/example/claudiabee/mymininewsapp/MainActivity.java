@@ -2,6 +2,7 @@ package com.example.claudiabee.mymininewsapp;
 
 import android.app.LoaderManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -12,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_card_recycler);
         ButterKnife.bind(this);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Create a new LinearLayout manager to manage the positioning of the news card view items
         mNewsCardLinearLayoutManager = new LinearLayoutManager(this);
@@ -136,4 +140,26 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mNewsCardAdapter = new NewsCardAdapter(newsFeed, this);
         mNewsCardRecyclerView.setAdapter(mNewsCardAdapter);
     }
+
+
+    @Override
+    // This methods initialize the content of the Option Menu of the Activity
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the Options Menu specified in the main.xml
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    // This methods opens the SettingsActivity via an intent when menu item is selected
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
