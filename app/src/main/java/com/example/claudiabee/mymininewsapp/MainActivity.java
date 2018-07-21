@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      * URL to query for news data from the Guardian dataset
      */
     // Add a personal key at the end of the url String before trying the app
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=europe,culrure,politics&format=json&show-tags=contributor&api-key=ADD_YOUR_KEY_HERE";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=europe,culrure,politics&format=json&show-tags=contributor&api-key=ADD_YOUR_API_KEY_HERE";
 
     /**
      * Constant value for the earthquake loader
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_card_recycler);
         ButterKnife.bind(this);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        // getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Create a new LinearLayout manager to manage the positioning of the news card view items
         mNewsCardLinearLayoutManager = new LinearLayoutManager(this);
