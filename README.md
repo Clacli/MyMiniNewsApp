@@ -1,5 +1,5 @@
 # MyMiniNewsApp
-project 6
+project 6 and project 7
 Udacity - Google Android Basics Nanodegree Scholarship 2017/2018
 #madewithudacity #googleudacityscholars #abndproject 
 
@@ -8,8 +8,13 @@ and in that case it query The Guardian API, fetch news information in form of
 a JSON string and subsequently parse it and extract section name, title of the news,
 author and date and display them on the screen. Date and author might not be shown.
 
+A SettingsActivity was added. 
+Searches can be performed on selected topic and section news and they can be ordered by relevance, newest news and oldest news.
+Under the preference name the user can see its value.
+
 Important:
-to test it add a student key to the url string.
+In order to test it, update the STUDENT_API_KEY String value with a student API key from The Guardian Open Platform:
+https://open-platform.theguardian.com/access/
 
 CardViews and RecyclerView
 https://developer.android.com/guide/topics/ui/layout/cardview
