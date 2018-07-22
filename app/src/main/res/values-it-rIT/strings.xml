@@ -18,7 +18,7 @@
     <!-- The message displayed in case it was not possible to retrieve any news -->
     <string name="no_article_found">
         Ooops&#8230;\nSembra che non ci siano notizie su questo argomento.\n
-        Prova a controllare più tardi
+        Prova a con altre chiavi di ricerca
     </string>
 
     <!-- The message displayed in case there is no internet connection -->
@@ -32,6 +32,10 @@
 
     <!-- Strings to be used for the Preference Labels -->
     <string name="settings_topic_label">Argomento</string>
+
+    <!-- Strings to be used for the "section" preference -->
+    <string name="settings_section_label">Sezione</string>
+    <string name="section_hint">Una parola, es. musica</string>
 
     <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
     <string name="settings_order_by_label">Ordina secondo</string>

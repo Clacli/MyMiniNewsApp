@@ -31,6 +31,12 @@ public class SettingsActivity extends AppCompatActivity {
             // so that it displays the current value stored in SharedPreferences.
             bindPreferenceSummaryToValue(topic);
 
+            // Find the "section" Preference object according to its key
+            Preference section = findPreference(getString(R.string.settings_section_key));
+            // Help with binding the value that’s in SharedPreferences to what will show up in
+            // the preference summary
+            bindPreferenceSummaryToValue(section);
+
             // Find the “order by” Preference object according to its key
             Preference orderBy = findPreference(getString(R.string.settings_order_by_key));
             bindPreferenceSummaryToValue(orderBy);

@@ -105,6 +105,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // default value for this preference.
         String topic = sharedPreferences.getString(getString(R.string.settings_topic_key), getString(R.string.settings_topic_default));
 
+        // getString retrieves a String value from the preferences (section). The second parameter is the
+        // default value for this preference.
+        String section = sharedPreferences.getString(getString(R.string.settings_section_key), getString(R.string.settings_section_default));
+
         // getString retrieves a String value from the preferences (order by). The second parameter is the
         // default value for this preference.
         String orderBy = sharedPreferences.getString(getString(R.string.settings_order_by_key), getString(R.string.settings_order_by_default));
@@ -118,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // Append query parameter and its value. For example, the 'format=json'
         uriBuilder.appendQueryParameter("q", topic);
         uriBuilder.appendQueryParameter("format", "json");
+        uriBuilder.appendQueryParameter("section", section);
         uriBuilder.appendQueryParameter("order-by", orderBy);
         uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("api-key", STUDENT_API_KEY);

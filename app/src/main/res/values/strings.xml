@@ -16,7 +16,10 @@
     <string name="news_title">News Title</string>
 
     <!-- The message displayed in case it was not possible to retrieve any news -->
-    <string name="no_article_found">Ooops&#8230;\nIt seems that there are no articles about this topic at the moment.\nPlease try and check out later</string>
+    <string name="no_article_found">
+        Ooops&#8230;\nIt seems that there are no articles matching your
+        preferences.\nPlease try with another search string
+    </string>
 
     <!-- The message displayed in case there is no internet connection -->
     <string name="no_internet_connection_message">No Internet Connection</string>
@@ -27,10 +30,16 @@
     <!-- Title of Settings Activity -->
     <string name="settings_title">News Settings</string>
 
-    <!-- Strings to be used for the Preference Labels -->
+    <!-- Strings to be used for the "topic" preference  -->
     <string name="settings_topic_label">Topic</string>
     <string name="settings_topic_key" translatable="false">topic</string>
     <string name="settings_topic_default" translatable="false">hope</string>
+
+    <!-- Strings to be used for the "section" preference -->
+    <string name="settings_section_label">Section</string>
+    <string name="settings_section_key" translatable="false">section</string>
+    <string name="settings_section_default" translatable="false">world</string>
+    <string name="section_hint">One word only, e.g. music</string>
 
     <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
     <string name="settings_order_by_label">Order By</string>
@@ -48,5 +57,6 @@
     <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
     <string name="settings_order_by_oldest_label">Oldest</string>
     <string name="settings_order_by_oldest_value" translatable="false">oldest</string>
+
 
 </resources>
