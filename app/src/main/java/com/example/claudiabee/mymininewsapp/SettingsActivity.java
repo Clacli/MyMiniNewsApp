@@ -2,6 +2,7 @@ package com.example.claudiabee.mymininewsapp;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -23,8 +24,16 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
+            // Find the “topic” Preference object according to its key
             Preference topic = findPreference(getString(R.string.settings_topic_key));
+            // Call the bindPreferenceSummaryToValue() helper method on this Preference object,
+            // which will set this fragment as the OnPreferenceChangeListener and update the summary
+            // so that it displays the current value stored in SharedPreferences.
             bindPreferenceSummaryToValue(topic);
+
+            // Find the “order by” Preference object according to its key
+            Preference orderBy = findPreference(getString(R.string.settings_order_by_key));
+            bindPreferenceSummaryToValue(orderBy);
         }
 
         @Override
@@ -32,7 +41,17 @@ public class SettingsActivity extends AppCompatActivity {
             // The code in this method takes care of updating the displayed preference summary
             // after it has been changed
             String stringValue = newValue.toString();
-            preference.setSummary(stringValue);
+
+            if (preference instanceof ListPreference) {
+                ListPreference listPreference = (ListPreference) preference;
+                int preferenceIndex = listPreference.findIndexOfValue(stringValue);
+                if (preferenceIndex >= 0) {
+                    CharSequence[] labels = listPreference.getEntries();
+                    preference.setSummary(labels[preferenceIndex]);
+                }
+            } else {
+                preference.setSummary(stringValue);
+            }
             return true;
         }
 

@@ -32,8 +32,17 @@
 
     <!-- Strings to be used for the Preference Labels -->
     <string name="settings_topic_label">Argomento</string>
-    <string name="settings_topic_key" translatable="false">Argomento</string>
-    <string name="settings_topic_default" translatable="false">hope</string>
 
+    <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
+    <string name="settings_order_by_label">Ordina secondo</string>
+
+    <!-- Label for order-by relevance option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_relevance_label">Importanza</string>
+
+    <!-- Label for order-by most recent news [CHAR LIMIT=20] -->
+    <string name="settings_order_by_newest_label">Più recente</string>
+
+    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_oldest_label">Meno recente</string>
 
 </resources>

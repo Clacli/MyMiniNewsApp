@@ -15,7 +15,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -88,7 +87,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (isConnected) {
             // Prepare the Loader. Either re-connect with an existing one, or start a new one
             getLoaderManager().initLoader(LOADER_ID, null, this);
-            Log.d(LOG_TAG, "Verifying Loader behaviour: init loader");
         } else {
             mLoadingIndicator.setVisibility(View.GONE);
             mEmptyView.setText(noInternetConnectionMessage);
@@ -107,6 +105,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // default value for this preference.
         String topic = sharedPreferences.getString(getString(R.string.settings_topic_key), getString(R.string.settings_topic_default));
 
+        // getString retrieves a String value from the preferences (order by). The second parameter is the
+        // default value for this preference.
+        String orderBy = sharedPreferences.getString(getString(R.string.settings_order_by_key), getString(R.string.settings_order_by_default));
+
         // parse breaks apart the URI string that's passed into its parameter
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
 
@@ -116,11 +118,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // Append query parameter and its value. For example, the 'format=json'
         uriBuilder.appendQueryParameter("q", topic);
         uriBuilder.appendQueryParameter("format", "json");
+        uriBuilder.appendQueryParameter("order-by", orderBy);
         uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("api-key", STUDENT_API_KEY);
-
-        Log.d(LOG_TAG, "Verifying Loader behaviour: onCreateLoader");
-
 
         //  Create a new loader for the given URL
         return new NewsLoader(this, uriBuilder.toString());
@@ -145,7 +145,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             mEmptyView.setVisibility(View.GONE);
             updateUi(newsFeed);
         }
-        Log.d(LOG_TAG, "Verifying Loader behaviour: onLoadFinished.");
     }
 
     // 3 Third Loader callback method to override
@@ -153,7 +152,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoaderReset(@NonNull Loader<List<News>> loader) {
         // Loader reset, so we can clear out our existing data
         mNewsCardAdapter = null;
-        Log.d(LOG_TAG, "loader.reset?");
     }
 
     /**
